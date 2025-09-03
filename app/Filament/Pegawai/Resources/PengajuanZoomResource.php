@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Pegawai\Resources;
 
 use App\Filament\Resources\PengajuanZoomResource\Pages;
 use App\Models\PengajuanZoom;

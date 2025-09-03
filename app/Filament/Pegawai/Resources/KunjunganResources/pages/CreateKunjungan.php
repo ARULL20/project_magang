@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\KunjunganResource\Pages;
+namespace App\Filament\Pegawai\Resources\KunjunganResource\Pages;
 
-use App\Filament\Resources\KunjunganResource;
-use Filament\Actions;
+use App\Filament\Pegawai\Resources\KunjunganResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateKunjungan extends CreateRecord

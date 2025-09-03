@@ -18,28 +18,34 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends PanelProvider
+class PegawaiPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default() // jadikan panel ini default untuk admin
-            ->id('admin')
-            ->path('admin')
-            ->login()
-            ->registration()
+            ->id('pegawai')
+            ->path('pegawai')
+            ->login() // kalau pegawai juga login pakai tabel users
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->discoverResources(
+                in: app_path('Filament/Pegawai/Resources'), // pisahkan resource khusus pegawai
+                for: 'App\\Filament\\Pegawai\\Resources'
+            )
+            ->discoverPages(
+                in: app_path('Filament/Pegawai/Pages'),
+                for: 'App\\Filament\\Pegawai\\Pages'
+            )
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
+            ->discoverWidgets(
+                in: app_path('Filament/Pegawai/Widgets'),
+                for: 'App\\Filament\\Pegawai\\Widgets'
+            )
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
                 \App\Filament\Widgets\KunjunganStats::class,
             ])
             ->middleware([
@@ -60,6 +66,6 @@ class AdminPanelProvider extends PanelProvider
 
     public function afterLoginRedirectPath(): string
     {
-        return '/admin';
+        return '/pegawai';
     }
 }
