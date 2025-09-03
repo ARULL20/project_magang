@@ -2,7 +2,7 @@
 
 namespace App\Filament\Pegawai\Resources;
 
-use App\Filament\Resources\PengajuanZoomResource\Pages;
+use App\Filament\Pegawai\Resources\PengajuanZoomResource\Pages;
 use App\Models\PengajuanZoom;
 use Filament\Forms;
 use Filament\Forms\Form;

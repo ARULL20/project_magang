@@ -2,7 +2,7 @@
 
 namespace App\Filament\Pegawai\Resources\PengajuanZoomResource\Pages;
 
-use App\Filament\Resources\PengajuanZoomResource;
+use App\Filament\Pegawai\Resources\PengajuanZoomResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
@@ -15,5 +15,10 @@ class EditPengajuanZoom extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }
