@@ -2,12 +2,11 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pegawai\Pages\RegisterPegawai; 
+use App\Filament\Pegawai\Pages\Auth\Register;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -26,24 +25,24 @@ class PegawaiPanelProvider extends PanelProvider
         return $panel
             ->id('pegawai')
             ->path('pegawai')
-            ->login() // kalau pegawai juga login pakai tabel users
-            ->colors([
-                'primary' => Color::Blue,
-            ])
+
+            // Auth bawaan + halaman register kustom
+            ->login()
+            ->registration(Register::class)
+
+            ->colors(['primary' => Color::Blue])
+
             ->discoverResources(
-                in: app_path('Filament/Pegawai/Resources'), // pisahkan resource khusus pegawai
-                for: 'App\\Filament\\Pegawai\\Resources'
+                in: app_path('Filament/Pegawai/Resources'),
+                for: 'App\\Filament\\Pegawai\\Resources',
             )
             ->discoverPages(
                 in: app_path('Filament/Pegawai/Pages'),
-                for: 'App\\Filament\\Pegawai\\Pages'
+                for: 'App\\Filament\\Pegawai\\Pages',
             )
-            ->pages([
-                Pages\Dashboard::class,
-            ])
             ->discoverWidgets(
                 in: app_path('Filament/Pegawai/Widgets'),
-                for: 'App\\Filament\\Pegawai\\Widgets'
+                for: 'App\\Filament\\Pegawai\\Widgets',
             )
             ->widgets([
                 Widgets\AccountWidget::class,
