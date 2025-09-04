@@ -20,6 +20,12 @@
     <main class="flex-grow flex items-center justify-center px-4">
         <div class="bg-white/90 backdrop-blur shadow-xl rounded-2xl p-8 w-full max-w-md text-center border border-gray-100">
             <div class="space-y-4">
+                {{-- Logo di atas login --}}
+                <div class="flex justify-center mb-6">
+                    <img src="{{ asset('images/logoo.png') }}" alt="Logo"
+                         class="h-300 w-auto object-contain">
+                </div>
+
                 @auth
                     {{-- Sudah login --}}
                     @if(auth()->user()->role === 'admin')
@@ -63,7 +69,7 @@
 
     {{-- Optional Wave/Footer Decoration --}}
     <footer class="text-center py-4 text-gray-400 text-sm">
-        Dibuat dengan ❤️ oleh Zuharul Habib
+        by Zuharul Habib
     </footer>
 </body>
 </html>
