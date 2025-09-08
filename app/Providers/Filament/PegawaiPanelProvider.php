@@ -7,6 +7,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Notifications\Notification;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -26,7 +27,6 @@ class PegawaiPanelProvider extends PanelProvider
             ->id('pegawai')
             ->path('pegawai')
 
-            // Auth bawaan + halaman register kustom
             ->login()
             ->registration(Register::class)
 
@@ -34,7 +34,6 @@ class PegawaiPanelProvider extends PanelProvider
                 'primary' => Color::Blue,
             ])
 
-            // Temukan resource & halaman khusus panel pegawai
             ->discoverResources(
                 in: app_path('Filament/Pegawai/Resources'),
                 for: 'App\\Filament\\Pegawai\\Resources',
@@ -43,13 +42,11 @@ class PegawaiPanelProvider extends PanelProvider
                 in: app_path('Filament/Pegawai/Pages'),
                 for: 'App\\Filament\\Pegawai\\Pages',
             )
-            // Temukan widget khusus panel pegawai
             ->discoverWidgets(
                 in: app_path('Filament/Pegawai/Widgets'),
                 for: 'App\\Filament\\Pegawai\\Widgets',
             )
 
-            // Widget default yang selalu muncul
             ->widgets([
                 Widgets\AccountWidget::class,
                 \App\Filament\Pegawai\Widgets\KunjunganChart::class,
@@ -73,8 +70,11 @@ class PegawaiPanelProvider extends PanelProvider
             ]);
     }
 
-    public function afterLoginRedirectPath(): string
-    {
-        return '/pegawai';
-    }
+   public function afterLoginRedirectPath(): string
+{
+    session()->flash('login_success_message', 'Selamat datang kembali!');
+    return '/pegawai';
+}
+
+
 }

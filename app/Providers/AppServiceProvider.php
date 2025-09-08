@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
 use App\Http\Responses\Auth\LogoutResponse as CustomLogoutResponse;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Events\Login;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Saat user berhasil login
+        Event::listen(Login::class, function (Login $event) {
+            // Hanya untuk panel pegawai
+            if (filament()->getCurrentPanel()?->getId() === 'pegawai') {
+                // Simpan pesan sekali pakai ke session
+                session()->flash(
+                    'login_success_message',
+                    'Selamat Datang, ' . ($event->user->name ?? 'Pegawai') . '!'
+                );
+            }
+        });
     }
 }
