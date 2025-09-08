@@ -6,7 +6,8 @@ use App\Models\Kunjungan;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
 
-class KunjunganStats extends ChartWidget
+class KunjunganChart extends ChartWidget
+
 {
     protected static ?string $heading = 'Statistik Kunjungan per Bulan';
 

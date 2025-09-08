@@ -22,8 +22,8 @@
             <div class="space-y-4">
                 {{-- Logo di atas login --}}
                 <div class="flex justify-center mb-6">
-                    <img src="{{ asset('images/logoo.png') }}" alt="Logo"
-                         class="h-300 w-auto object-contain">
+                    <img src="{{ asset('images/logoreal.jpg') }}" alt="Logo"
+                         class="h-50 w-auto object-contain">
                 </div>
 
                 @auth
