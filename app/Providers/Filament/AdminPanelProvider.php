@@ -41,8 +41,8 @@ class AdminPanelProvider extends PanelProvider
                 //Widgets\AccountWidget::class,
                 //Widgets\FilamentInfoWidget::class,
                 \App\Filament\Widgets\KunjunganChart::class,
-                \App\Filament\Widgets\PengajuanStats::class,
                 \App\Filament\Widgets\KunjunganStats::class,
+                \App\Filament\Widgets\PengajuanStats::class,
             ])
             ->middleware([
                 EncryptCookies::class,

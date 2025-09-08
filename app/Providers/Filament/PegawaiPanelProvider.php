@@ -30,8 +30,11 @@ class PegawaiPanelProvider extends PanelProvider
             ->login()
             ->registration(Register::class)
 
-            ->colors(['primary' => Color::Blue])
+            ->colors([
+                'primary' => Color::Blue,
+            ])
 
+            // Temukan resource & halaman khusus panel pegawai
             ->discoverResources(
                 in: app_path('Filament/Pegawai/Resources'),
                 for: 'App\\Filament\\Pegawai\\Resources',
@@ -40,14 +43,20 @@ class PegawaiPanelProvider extends PanelProvider
                 in: app_path('Filament/Pegawai/Pages'),
                 for: 'App\\Filament\\Pegawai\\Pages',
             )
+            // Temukan widget khusus panel pegawai
             ->discoverWidgets(
                 in: app_path('Filament/Pegawai/Widgets'),
                 for: 'App\\Filament\\Pegawai\\Widgets',
             )
+
+            // Widget default yang selalu muncul
             ->widgets([
                 Widgets\AccountWidget::class,
-                \App\Filament\Widgets\KunjunganStats::class,
+                \App\Filament\Pegawai\Widgets\KunjunganChart::class,
+                \App\Filament\Pegawai\Widgets\PengajuanStats::class,
+                \App\Filament\Pegawai\Widgets\KunjunganStats::class,
             ])
+
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
