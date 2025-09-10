@@ -7,6 +7,10 @@ use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContr
 use App\Http\Responses\Auth\LogoutResponse as CustomLogoutResponse;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Login;
+use Filament\Facades\Filament;
+use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Assets\Css;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,12 +31,19 @@ class AppServiceProvider extends ServiceProvider
         Event::listen(Login::class, function (Login $event) {
             // Hanya untuk panel pegawai
             if (filament()->getCurrentPanel()?->getId() === 'pegawai') {
-                // Simpan pesan sekali pakai ke session
                 session()->flash(
                     'login_success_message',
                     'Selamat Datang, ' . ($event->user->name ?? 'Pegawai') . '!'
                 );
             }
         });
+
+        // ✅ Daftarkan custom CSS dengan FilamentAsset
+      // Filament::serving(function () {
+    //FilamentAsset::register([
+        //Css::make('app-custom-styles', asset('css/custom-filament.css')),
+        //]);
+   // });
+
     }
 }

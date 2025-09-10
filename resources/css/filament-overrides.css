@@ -1,0 +1,4 @@
+/* Contoh kecil: ubah warna sidebar */
+.fi-sidebar {
+    background-color: #1e293b !important;
+}

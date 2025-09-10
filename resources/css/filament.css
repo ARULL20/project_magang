@@ -1,0 +1,30 @@
+/* Contoh styling kustom untuk Filament */
+
+/* Sidebar */
+.fi-sidebar {
+    background: linear-gradient(180deg, #1e3a8a, #1e40af);
+    color: #f8fafc;
+}
+
+/* Sidebar menu hover */
+.fi-sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Topbar */
+.fi-topbar {
+    background-color: #0f172a;
+    border-bottom: 1px solid #1e293b;
+}
+
+/* Card widget */
+.fi-widget {
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.fi-widget:hover {
+    transform: translateY(-4px);
+}

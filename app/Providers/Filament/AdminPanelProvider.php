@@ -27,9 +27,17 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('Sistem Kunjungan & Zoom') 
+            ->darkMode(true)
+            //->viteTheme('resources/css/filament.css')
+            //->viteTheme('resources/css/filament-overrides.css')
+            //->viteTheme('resources/css/custom-filament.css')
+            //->viteTheme('resources/css/app.css')
+
             //->registration()
             ->colors([
                 'primary' => Color::Amber,
+                
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
